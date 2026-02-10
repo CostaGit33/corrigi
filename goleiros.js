@@ -3,7 +3,7 @@ import { apiRequest, calculatePoints } from "./globais.js";
 /* ======================================================
    CONFIGURAÇÃO
 ====================================================== */
-const GOLEIROS_ENDPOINT = "/jogadores2";
+const GOLEIROS_ENDPOINT = "/goleiros";
 
 /* ======================================================
    INICIALIZAÇÃO

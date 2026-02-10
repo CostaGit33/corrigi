@@ -83,13 +83,13 @@ app.put("/jogadores/:id", async (req, res) => {
 })
 
 /* ======================================================
-   ENDPOINTS GOLEIROS (TABELA JOGADORES2)
+   ENDPOINTS GOLEIROS (TABELA GOLEIROS)
 ====================================================== */
 
 // Listar todos os goleiros
-app.get("/jogadores2", async (req, res) => {
+app.get("/goleiros", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM jogadores2 ORDER BY id DESC")
+    const result = await pool.query("SELECT * FROM goleiros ORDER BY id DESC")
     res.json(result.rows)
   } catch (err) {
     console.error("Erro ao buscar goleiros:", err)
@@ -98,10 +98,10 @@ app.get("/jogadores2", async (req, res) => {
 })
 
 // Buscar um goleiro específico por ID
-app.get("/jogadores2/:id", async (req, res) => {
+app.get("/goleiros/:id", async (req, res) => {
   const { id } = req.params
   try {
-    const result = await pool.query("SELECT * FROM jogadores2 WHERE id = $1", [id])
+    const result = await pool.query("SELECT * FROM goleiros WHERE id = $1", [id])
     if (result.rows.length === 0) {
       return res.status(404).json({ error: "Goleiro não encontrado" })
     }

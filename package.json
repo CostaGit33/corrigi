@@ -1,0 +1,25 @@
+{
+  "name": "corrigi",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000r\u0000\r\u0000 \u0000#\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000r\u0000\r\u0000 \u0000#\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000r\u0000\r\u0000 \u0000#\u0000 \u0000c\u0000o\u0000n\u0000f\u0000i\u0000g\u0000u\u0000r\u0000a\u0000r\u0000\r\u0000 \u0000#\u0000 \u0000s\u0000e\u0000m\u0000d\u0000o\u0000m\u0000i\u0000n\u0000i\u0000o\u0000o\u0000\r\u0000 \u0000",
+  "main": "classificacao.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CostaGit33/corrigi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CostaGit33/corrigi/issues"
+  },
+  "homepage": "https://github.com/CostaGit33/corrigi#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}

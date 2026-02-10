@@ -46,8 +46,8 @@ async function loadPlayer() {
     try {
       player = await apiRequest(`/jogadores/${id}`);
     } catch (e) {
-      // Se não encontrar, tenta na tabela de goleiros (jogadores2)
-      player = await apiRequest(`/jogadores2/${id}`);
+      // Se não encontrar, tenta na tabela de goleiros
+      player = await apiRequest(`/goleiros/${id}`);
     }
 
     if (!player) {
