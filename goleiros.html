@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FutPontos – Goleiros</title>
+
+  <link rel="stylesheet" href="classificacao.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <img src="futponts_large.png" alt="Logo" class="brand-logo">
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    <nav class="app-nav">
+      <ul>
+        <li><a href="index.html">Classificação Geral</a></li>
+        <li><a href="goleiros.html" class="active">Goleiros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="app-main">
+
+    <section class="section-header brand">
+      <h2>🏆 Ranking de Goleiros</h2>
+    </section>
+
+    <section class="table-wrapper">
+      <img src="futponts_large.png" class="table-watermark" alt="" aria-hidden="true">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>#</th> <th>Goleiro</th>
+            <th>P</th>
+            <th>V</th>
+            <th>E</th>
+            <th>G</th>
+            <th>D</th>
+            <th>INF</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-goleiros">
+          </tbody>
+      </table>
+    </section>
+
+    <section class="cards-section">
+      <header class="section-header">
+        <h2>🔥 Mural de Goleiros</h2>
+      </header>
+      <div class="cards" id="cards-goleiros">
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <img src="futponts_large.png" alt="" class="footer-logo" />
+      <span></span>
+    </div>
+  </footer>
+
+  <div id="feedback" aria-live="polite"></div>
+
+  <script type="module" src="globais.js"></script>
+  <script type="module" src="goleiros.js"></script>
+</body>
+</html>

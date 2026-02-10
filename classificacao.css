@@ -1,0 +1,285 @@
+/* ======================================================
+   SEGURANÇA GLOBAL (ANTI-IMAGEM GIGANTE)
+====================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ======================================================
+   ÁREA PRINCIPAL
+====================================================== */
+
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* ======================================================
+   HEADER DE SEÇÃO
+====================================================== */
+
+.section-header h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--highlight-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ======================================================
+   LOGO DO TOPO
+====================================================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ======================================================
+   TABELA (FULL WIDTH, SEM SCROLL)
+====================================================== */
+
+.table-wrapper {
+  position: relative;
+  background: rgba(20, 20, 20, 0.65);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+/* Watermark seguro */
+.table-watermark {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  opacity: 0.06;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ======================================================
+   TABELA
+====================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  position: relative;
+  z-index: 1;
+}
+
+thead {
+  background: linear-gradient(
+    135deg,
+    rgba(214,40,40,0.9),
+    rgba(140,20,20,0.9)
+  );
+}
+
+th,
+td {
+  padding: 0.55rem 0.35rem;
+  font-size: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Cabeçalho */
+th {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ======================================================
+   COLUNA JOGADOR (PRIORIDADE TOTAL)
+====================================================== */
+
+th:first-child,
+td:first-child {
+  text-align: left;
+  padding-left: 0.6rem;
+  width: 52%;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ======================================================
+   COLUNAS DE DADOS (P, V, G, D, E, INF)
+====================================================== */
+
+th:not(:first-child),
+td:not(:first-child) {
+  width: calc(48% / 1);
+  white-space: nowrap;
+}
+
+/* ======================================================
+   INTERAÇÃO
+====================================================== */
+
+tbody tr {
+  transition: background 0.25s ease;
+}
+
+tbody tr:hover {
+  background: rgba(214, 40, 40, 0.12);
+}
+
+/* Líder */
+tbody tr:first-child {
+  background: rgba(214, 40, 40, 0.18);
+  font-weight: 700;
+}
+
+/* ======================================================
+   CARDS
+====================================================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.player-card {
+  background: linear-gradient(
+    145deg,
+    rgba(214,40,40,0.95),
+    rgba(120,20,20,0.95)
+  );
+  border-radius: 18px;
+  padding: 1.75rem;
+  position: relative;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+}
+
+.player-rank {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  opacity: 0.35;
+}
+
+.player-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.player-points {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--highlight-color);
+  margin-bottom: 1.25rem;
+}
+
+/* ======================================================
+   TOP 3
+====================================================== */
+
+.top-1 {
+  border: 2px solid var(--highlight-color);
+  box-shadow: 0 0 18px rgba(255,209,102,0.5);
+}
+
+.top-2 { border: 2px solid #c0c0c0; }
+.top-3 { border: 2px solid #cd7f32; }
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 480px) {
+
+  th,
+  td {
+    font-size: 0.62rem;
+    padding: 0.05rem 0.05rem;
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 5%;
+  }
+
+  th:not(:first-child),
+  td:not(:first-child) {
+    width: calc(44% / 6);
+  }
+
+  .brand-logo {
+    width: 156px;
+    height: 134px;
+  }
+}
+
+
+/* ======================================================
+   LINK DO NOME DO JOGADOR (MANTER BRANCO)
+====================================================== */
+
+.table-wrapper td a {
+  color: #fff;               /* mantém branco */
+  text-decoration: none;     /* remove sublinhado */
+  font-weight: 600;
+}
+
+.table-wrapper td a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Detalhes do Jogador</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="common-nav.css" />
+  <link rel="stylesheet" href="jogador.css" />
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="app-header">
+    <div class="brand">
+      <img
+        src="futponts_large.png"
+        class="brand-logo"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+
+    <nav class="app-nav">
+      <ul>
+        <li>
+          <a href="index.html">Classificação</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="player-page">
+
+    <!-- LOADING / ERRO -->
+    <div id="playerState" class="player-loading">
+      Carregando jogador...
+    </div>
+
+    <!-- ================= CARD DO JOGADOR ================= -->
+    <section id="playerProfile" class="player-profile" hidden>
+
+      <!-- HEADER -->
+      <div class="player-header">
+
+        <!-- FOTO -->
+        <div class="photo-wrapper">
+          <img
+            id="playerPhoto"
+            class="player-photo"
+            alt="Foto do jogador"
+          />
+        </div>
+
+        <!-- INFO -->
+        <div class="player-info">
+          <h1 id="playerName" class="player-name"></h1>
+          <div class="player-points">
+            <span id="playerPoints">0</span> pts
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= ESTATÍSTICAS ================= -->
+      <div class="stats-grid">
+
+        <div class="stat-box">
+          <div id="statVitorias" class="stat-value">0</div>
+          <div class="stat-label">Vitórias</div>
+        </div>
+
+        <div class="stat-box">
+          <div id="statGols" class="stat-value">0</div>
+          <div class="stat-label">Gols</div>
+        </div>
+
+        <div class="stat-box">
+          <div id="statDefesas" class="stat-value">0</div>
+          <div class="stat-label">Defesas</div>
+        </div>
+
+        <div class="stat-box">
+          <div id="statEmpates" class="stat-value">0</div>
+          <div class="stat-label">Empates</div>
+        </div>
+
+        <div class="stat-box">
+          <div id="statInfracoes" class="stat-value">0</div>
+          <div class="stat-label">Infrações</div>
+        </div>
+
+      </div>
+
+      <!-- ================= AÇÕES ================= -->
+      <div class="player-actions">
+        <a href="index.html" class="btn-back">
+          ⬅ Voltar para classificação
+        </a>
+
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FEEDBACK ================= -->
+  <div id="feedback" aria-live="polite"></div>
+
+  <!-- ================= JS ================= -->
+  <script type="module" src="./globais.js"></script>
+  <script type="module" src="./jogador.js"></script>
+
+</body>
+</html>
