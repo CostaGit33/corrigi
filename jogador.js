@@ -1,4 +1,4 @@
-import { apiRequest, showFeedback } from "./globais.js";
+import { apiRequest, calculatePoints, showFeedback } from "./globais.js";
 
 /* ======================================================
    UTIL
@@ -7,26 +7,6 @@ import { apiRequest, showFeedback } from "./globais.js";
 function getPlayerIdFromURL() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
-}
-
-/* ======================================================
-   REGRA DE PONTUAÇÃO (OFICIAL)
-====================================================== */
-
-function calculatePoints({
-  vitorias = 0,
-  gols = 0,
-  empate = 0,
-  defesa = 0,
-  infracoes = 0
-}) {
-  return (
-    Number(vitorias) * 3 +
-    Number(gols) * 2 +
-    Number(empate) +
-    Number(defesa) -
-    Number(infracoes) * 2
-  );
 }
 
 /* ======================================================
@@ -56,18 +36,19 @@ async function loadPlayer() {
   const id = getPlayerIdFromURL();
 
   if (!id) {
-    showError("Jogador não encontrado.");
+    showError("ID do jogador não fornecido.");
     return;
   }
 
   try {
-    const jogadores = await apiRequest("/jogadores");
-
-    if (!Array.isArray(jogadores)) {
-      throw new Error("Resposta inválida da API");
+    // Tenta buscar primeiro na tabela de jogadores principal
+    let player;
+    try {
+      player = await apiRequest(`/jogadores/${id}`);
+    } catch (e) {
+      // Se não encontrar, tenta na tabela de goleiros (jogadores2)
+      player = await apiRequest(`/jogadores2/${id}`);
     }
-
-    const player = jogadores.find(j => String(j.id) === String(id));
 
     if (!player) {
       showError("Jogador não encontrado.");
@@ -77,7 +58,7 @@ async function loadPlayer() {
     renderPlayer(player);
 
   } catch (err) {
-    console.error(err);
+    console.error("Erro ao carregar jogador:", err);
     showError("Erro ao carregar dados do jogador.");
   }
 }
@@ -94,20 +75,29 @@ function renderPlayer(p) {
   // Nome
   nameEl.textContent = p.nome;
 
-  // Pontos recalculados (fonte da verdade)
-  const pontosCalculados = calculatePoints(p);
-  pointsEl.textContent = pontosCalculados;
+  // Normalização de campos (suporte a diferentes nomes de colunas se houver)
+  const v = Number(p.vitorias) || 0;
+  const e = Number(p.empate) || 0;
+  const d = Number(p.defesa) || 0;
+  const g = Number(p.gols) || 0;
+  const i = Number(p.infracoes) || 0;
+
+  // Pontos recalculados usando a função global (fonte da verdade)
+  const pontosCalculados = calculatePoints(v, e, d, g, i);
+  pointsEl.textContent = pontosCalculados.toFixed(1);
 
   // Estatísticas
-  statV.textContent = Number(p.vitorias)  || 0;
-  statG.textContent = Number(p.gols)      || 0;
-  statD.textContent = Number(p.defesa)    || 0;
-  statE.textContent = Number(p.empate)    || 0;
-  statI.textContent = Number(p.infracoes) || 0;
+  if (statV) statV.textContent = v;
+  if (statG) statG.textContent = g;
+  if (statD) statD.textContent = d;
+  if (statE) statE.textContent = e;
+  if (statI) statI.textContent = i;
 
   // Foto segura
-  photoEl.src = p.foto || "futponts_large.png";
-  photoEl.alt = `Foto de ${p.nome}`;
+  if (photoEl) {
+    photoEl.src = p.foto || "futponts_large.png";
+    photoEl.alt = `Foto de ${p.nome}`;
+  }
 
   // Link para edição
   if (editBtn) {

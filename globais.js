@@ -3,7 +3,10 @@
 ====================================================== */
 
 // Centraliza a URL base para evitar repetições nos outros arquivos
-export const API_BASE_URL = "https://api.semdominio.online";
+// Detecta se está rodando localmente ou em produção
+export const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:3000"
+  : "https://api.semdominio.online";
 
 /**
  * Cliente padrão para comunicação com a API
